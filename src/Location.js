@@ -159,9 +159,21 @@ export class CurrentLocation extends React.Component {
       this.map = new maps.Map(node, mapConfig);
       this.map.addListener("click", (event) => {
         alert("clicked" + event.latLng);
+        this.reverseAddress(event.latLng, maps);
         this.placeMarkerAndPanTo(event.latLng, this.map, maps);
       });
     }
+  }
+
+  reverseAddress(latLng, maps) {
+    var geocoder = new maps.Geocoder();
+    geocoder.geocode({ location: latLng }, (results, status) => {
+      alert(status);
+      if (status === "OK") {
+        alert(results[3].address_components[0].long_name);
+        console.log(results);
+      }
+    });
   }
 
   placeMarkerAndPanTo(latLng, map, maps) {

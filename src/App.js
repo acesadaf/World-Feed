@@ -14,9 +14,9 @@ function App() {
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
         crossorigin="anonymous"
       ></link>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar  navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
-          Navbar
+          World Feed (Alpha)
         </a>
         <button
           class="navbar-toggler"
