@@ -1,0 +1,32 @@
+.flexbox-container {
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 100vh;
+}
+
+.flexbox-container #left_container {
+  flex: 1;
+  overflow-y: scroll;
+  height: 100vh;
+  background: black;
+  /* padding: 0 5px; */
+}
+
+.container-content {
+  height: 100vh;
+}
+
+.flexbox-container #map_container {
+  margin-right: 0px;
+}
+#map_canvas {
+  flex: 5;
+  /* transition: all 0.5s ease-in-out; */
+  transform: scale(1);
+  /* -moz-transform: scale(1);
+  -o-transform: scale(1);
+  opacity: 1; */
+}

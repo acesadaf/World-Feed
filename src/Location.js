@@ -158,22 +158,41 @@ export class CurrentLocation extends React.Component {
 
       this.map = new maps.Map(node, mapConfig);
       this.map.addListener("click", (event) => {
-        alert("clicked" + event.latLng);
+        // alert("clicked" + event.latLng);
+        console.log(event);
         this.reverseAddress(event.latLng, maps);
         this.placeMarkerAndPanTo(event.latLng, this.map, maps);
       });
+      // const service = new maps.places.PlacesService(this.map);
+      // var request = {
+      //   placeId: "ChIJN1t_tDeuEmsRUsoyG83frY4",
+      //   fields: ["name", "rating", "formatted_phone_number", "geometry"],
+      // };
+
+      // service.getDetails(request, (place, status) => {
+      //   if (status === maps.places.PlacesServiceStatus.OK) {
+      //     this.map.addListener("click", (event) => {
+      //       console.log(place.name);
+      //     });
+      //   }
+      // });
+      // this.getPlaceInfo(this.map, maps);
     }
   }
 
   reverseAddress(latLng, maps) {
     var geocoder = new maps.Geocoder();
     geocoder.geocode({ location: latLng }, (results, status) => {
-      alert(status);
+      // alert(status);
       if (status === "OK") {
-        alert(results[3].address_components[0].long_name);
-        console.log(results);
+        alert(results[results.length - 2].address_components[0].long_name);
+        // console.log(results);
       }
     });
+  }
+
+  getPlaceInfo(map, maps) {
+    const service = new maps.places.PlacesService(map);
   }
 
   placeMarkerAndPanTo(latLng, map, maps) {

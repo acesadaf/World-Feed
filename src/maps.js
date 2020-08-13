@@ -6,12 +6,16 @@ const mapStyles = {
   height: "100%",
 };
 
+const API_KEY = process.env.REACT_APP_API_KEY;
+
 export class MapContainer extends Component {
   state = {
     selectedLoc: {},
     currentMarker: {},
     info: false,
   };
+
+  API_KEY = this.props.apiKey;
 
   onMarkerClick = (props, marker, e) =>
     this.setState({
@@ -52,5 +56,5 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyDwvNf66Sbjxr8Iou7Z2kEqyNbEFkNTCqU",
+  apiKey: API_KEY,
 })(MapContainer);
