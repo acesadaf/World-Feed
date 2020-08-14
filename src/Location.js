@@ -160,6 +160,19 @@ export class CurrentLocation extends React.Component {
       this.map.addListener("click", (event) => {
         // alert("clicked" + event.latLng);
         console.log(event);
+        var latlng = event.latLng.toString().replace(/\(|\)/g, "").split(", ");
+        fetch("http://127.0.0.1:8000/get_tweet", {
+          method: "post",
+          headers: { "Content-type": "application/json" },
+
+          body: JSON.stringify({
+            lat: latlng[0],
+            lng: latlng[1],
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => console.log(data));
+
         this.reverseAddress(event.latLng, maps);
         this.placeMarkerAndPanTo(event.latLng, this.map, maps);
       });

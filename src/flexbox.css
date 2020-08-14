@@ -19,6 +19,10 @@
   height: 100vh;
 }
 
+.main {
+  background: grey;
+}
+
 .flexbox-container #map_container {
   margin-right: 0px;
 }

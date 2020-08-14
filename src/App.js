@@ -26,7 +26,7 @@ function TweetCard() {
 function App() {
   const cards = [0, 1, 2, 3, 4, 5];
   return (
-    <div>
+    <div class="main">
       <link
         rel="stylesheet"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
