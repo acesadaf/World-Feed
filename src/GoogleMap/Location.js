@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import ReactDOM from "../../node_modules/react-dom";
 import TweetContext from "../Tweets/TweetContext";
+import LocModal from "../components/Modal/LocationModal";
 const mapStyles = {
   map: {
     position: "absolute",
@@ -20,6 +21,8 @@ export class CurrentLocation extends React.Component {
         lat: lat,
         lng: lng,
       },
+      locModalShow: false,
+      locName: null,
     };
   }
 
@@ -207,7 +210,17 @@ export class CurrentLocation extends React.Component {
     geocoder.geocode({ location: latLng }, (results, status) => {
       // alert(status);
       if (status === "OK") {
-        alert(results[results.length - 2].address_components[0].long_name);
+        // let mp = document.getElementById("mapback");
+        // mp.classList.add("mapBlur");
+        localStorage.setItem(
+          "location",
+          results[results.length - 2].address_components[0].long_name
+        );
+        this.setState({
+          locModalShow: true,
+          locName: results[results.length - 2].address_components[0].long_name,
+        });
+        //alert(results[results.length - 2].address_components[0].long_name);
         // console.log(results);
       }
     });
@@ -253,14 +266,27 @@ export class CurrentLocation extends React.Component {
   }
 
   render() {
+    let locModalClose = () => {
+      // let mp = document.getElementById("mapback");
+      // mp.classList.remove("mapBlur");
+      this.setState({
+        locModalShow: false,
+      });
+    };
     const style = Object.assign({}, mapStyles.map);
     return (
       <div>
         {/* <TweetContext.Consumer></TweetContext.Consumer> */}
+
         <div style={style} ref="map">
           Loading map...
         </div>
         {this.renderChildren()}
+        <LocModal
+          locName={this.state.locName}
+          show={this.state.locModalShow}
+          onHide={locModalClose}
+        />
       </div>
     );
   }

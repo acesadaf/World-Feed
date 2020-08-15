@@ -8,7 +8,7 @@ const TweetCard = (tweet) => {
       <Card.Body>
         <Card.Title>{tweet.username} tweeted: </Card.Title>
         <Card.Text>{tweet.tweet}</Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Button variant="primary">Go to tweet!</Button>
       </Card.Body>
     </Card>
   );
