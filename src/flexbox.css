@@ -4,34 +4,44 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  background: black;
   /* flex-flow: row wrap; */
   height: 100vh;
 }
 
-.flexbox-container #left_container {
+.left_container {
+  min-width: 300px;
   flex: 1;
+  /* flex-basis: 100%; */
+  /* max-width: 500px; */
   overflow-y: scroll;
   /* width: 300px; */
-  height: 100vh;
+  /* height: 100vh; */
   background: black;
   /* padding: 0 5px; */
 }
 
-.container-content {
+/* .container-content {
   height: 100vh;
 }
 
 .main {
   background: grey;
-}
+} */
 
-.flexbox-container #map_container {
+/* .flexbox-container #map_container {
   margin-right: 0px;
-}
-#map_canvas {
+} */
+.map_canvas {
+  min-width: 800px;
   flex: 5;
+  background: black;
+  /* width: 400px; */
+  /* height: 100vh; */
+  /* flex: 5; */
+  /* width: 800px; */
   /* transition: all 0.5s ease-in-out; */
-  transform: scale(1);
+  /* transform: scale(1); */
   /* -moz-transform: scale(1);
   -o-transform: scale(1);
   opacity: 1; */

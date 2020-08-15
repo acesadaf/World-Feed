@@ -49,11 +49,11 @@ const App = () => {
           // }}
           class="flexbox-container"
         >
-          <div id="left_container">
+          <div class="left_container">
             {/* <div>{cards.map(TweetCard)}</div> */}
             <TweetList />
           </div>
-          <div id="map_canvas">
+          <div class="map_canvas">
             <MapContainer />
           </div>
         </div>

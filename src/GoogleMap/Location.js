@@ -176,7 +176,10 @@ export class CurrentLocation extends React.Component {
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
-            context.setTweets(data);
+            context.setTweets([]);
+            setTimeout(() => context.setTweets(data), 500);
+
+            //context.setTweets(data);
           });
 
         this.reverseAddress(event.latLng, maps);
