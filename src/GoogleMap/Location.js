@@ -1,6 +1,6 @@
-import React from "react";
-import ReactDOM from "react-dom";
-
+import React, { useContext } from "react";
+import ReactDOM from "../../node_modules/react-dom";
+import TweetContext from "../Tweets/TweetContext";
 const mapStyles = {
   map: {
     position: "absolute",
@@ -10,8 +10,10 @@ const mapStyles = {
 };
 
 export class CurrentLocation extends React.Component {
+  static contextType = TweetContext;
   constructor(props) {
     super(props);
+
     const { lat, lng } = this.props.initCenter;
     this.state = {
       currentLocation: {
@@ -157,6 +159,7 @@ export class CurrentLocation extends React.Component {
       );
 
       this.map = new maps.Map(node, mapConfig);
+      const context = this.context;
       this.map.addListener("click", (event) => {
         // alert("clicked" + event.latLng);
         console.log(event);
@@ -171,7 +174,10 @@ export class CurrentLocation extends React.Component {
           }),
         })
           .then((response) => response.json())
-          .then((data) => console.log(data));
+          .then((data) => {
+            console.log(data);
+            context.setTweets(data);
+          });
 
         this.reverseAddress(event.latLng, maps);
         this.placeMarkerAndPanTo(event.latLng, this.map, maps);
@@ -247,6 +253,7 @@ export class CurrentLocation extends React.Component {
     const style = Object.assign({}, mapStyles.map);
     return (
       <div>
+        {/* <TweetContext.Consumer></TweetContext.Consumer> */}
         <div style={style} ref="map">
           Loading map...
         </div>

@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import MapContainer from "./maps.js";
+import MapContainer from "./GoogleMap/maps.js";
 import NavBar from "./Nav/NavBar.js";
-import maps from "./maps";
+import maps from "./GoogleMap/maps";
 import { Card, Button } from "react-bootstrap";
 import "./flexbox.css";
+import TweetContext from "./Tweets/TweetContext";
+import TweetList from "./Tweets/TweetList";
 
 function TweetCard() {
   return (
@@ -23,7 +25,12 @@ function TweetCard() {
   );
 }
 
-function App() {
+const App = () => {
+  const [tweets, setTweets] = useState([
+    { username: "sadaf", tweet: "hi" },
+    { username: "halim", tweet: "hey" },
+  ]);
+  const tweetValue = { tweets, setTweets };
   const cards = [0, 1, 2, 3, 4, 5];
   return (
     <div class="main">
@@ -34,22 +41,25 @@ function App() {
         crossorigin="anonymous"
       ></link>
       <NavBar></NavBar>
-      <div
-        // style={{
-        //   dispaly: "flex",
-        //   flexDirection: "row",
-        // }}
-        class="flexbox-container"
-      >
-        <div id="left_container">
-          <div>{cards.map(TweetCard)}</div>
+      <TweetContext.Provider value={tweetValue}>
+        <div
+          // style={{
+          //   dispaly: "flex",
+          //   flexDirection: "row",
+          // }}
+          class="flexbox-container"
+        >
+          <div id="left_container">
+            {/* <div>{cards.map(TweetCard)}</div> */}
+            <TweetList />
+          </div>
+          <div id="map_canvas">
+            <MapContainer />
+          </div>
         </div>
-        <div id="map_canvas">
-          <MapContainer />
-        </div>
-      </div>
+      </TweetContext.Provider>
     </div>
   );
-}
+};
 
 export default App;
