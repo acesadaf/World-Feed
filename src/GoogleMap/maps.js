@@ -43,6 +43,9 @@ export class MapContainer extends Component {
       <CurrentLocation
         centerAroundCurrentLocation
         google={this.props.google}
+        zoom={this.props.zoom}
+        minZoom={this.props.minZoom}
+        maxZoom={this.props.maxZoom}
         // gestureHandling={"none"}
       >
         {/* <Marker onClick={this.onMarkerClick} name={"Dallas"} /> */}

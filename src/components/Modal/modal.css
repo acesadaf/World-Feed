@@ -1,3 +1,4 @@
-.modal-backdrop {
-  filter: blur(8px);
+.dialog {
+  /* border-radius: 25px; */
+  opacity: 0.9;
 }

@@ -23,10 +23,22 @@ export class CurrentLocation extends React.Component {
       },
       locModalShow: false,
       locName: null,
+      zoom: this.props.zoom,
     };
   }
 
   componentDidUpdate(prevProps, prevState) {
+    if (prevProps.zoom != this.props.zoom) {
+      let mp = document.getElementById("mapback");
+      mp.classList.remove("map_canvas");
+      mp.classList.add("map_canvas_blur");
+      this.setState({
+        locModalShow: true,
+        locName: this.props.zoom,
+      });
+      this.loadMap();
+    }
+
     if (prevProps.google != this.props.google) {
       this.loadMap();
     }
@@ -34,6 +46,21 @@ export class CurrentLocation extends React.Component {
       this.recenterMap();
     }
   }
+  // static getDerivedStateFromProps(props, state) {
+  //   if (props.zoom != state.zoom) {
+  //     return {
+  //       zoom: props.zoom,
+  //     };
+  //   }
+  // }
+
+  // componentWillReceiveProps(oldProps, newProps) {
+  //   if (oldProps.zoom != newProps.zoom) {
+  //     console.log(newProps);
+  //     // console.log(oldProps, newProps);
+  //     this.loadMap();
+  //   }
+  // }
 
   componentDidMount() {
     if (this.props.centerAroundCurrentLocation) {
@@ -166,6 +193,8 @@ export class CurrentLocation extends React.Component {
       this.map.addListener("click", (event) => {
         // alert("clicked" + event.latLng);
         console.log(event);
+        localStorage.setItem("location", "Loading Tweets..");
+        context.setTweets([]);
         var latlng = event.latLng.toString().replace(/\(|\)/g, "").split(", ");
         fetch("http://127.0.0.1:8000/get_tweet", {
           method: "post",
@@ -211,15 +240,28 @@ export class CurrentLocation extends React.Component {
       // alert(status);
       if (status === "OK") {
         // let mp = document.getElementById("mapback");
-        // mp.classList.add("mapBlur");
-        localStorage.setItem(
-          "location",
-          results[results.length - 2].address_components[0].long_name
-        );
-        this.setState({
-          locModalShow: true,
-          locName: results[results.length - 2].address_components[0].long_name,
-        });
+        // mp.classList.remove("map_canvas");
+        // mp.classList.add("map_canvas_blur");
+        console.log("hi", results);
+        var place = "";
+        try {
+          place =
+            this.props.zoom === 7
+              ? results[results.length - 2].address_components[0].long_name
+              : results[results.length - 2].address_components[1].long_name;
+        } catch (err) {
+          try {
+            place = results[0].address_components[0].long_name;
+          } catch (err2) {
+            place = "Invalid Location";
+          }
+        }
+
+        localStorage.setItem("location", place);
+        // this.setState({
+        //   locModalShow: true,
+        //   locName: place,
+        // });
         //alert(results[results.length - 2].address_components[0].long_name);
         // console.log(results);
       }
@@ -267,6 +309,10 @@ export class CurrentLocation extends React.Component {
 
   render() {
     let locModalClose = () => {
+      let mp = document.getElementById("mapback");
+      mp.classList.remove("map_canvas_blur");
+      mp.classList.add("map_canvas");
+
       // let mp = document.getElementById("mapback");
       // mp.classList.remove("mapBlur");
       this.setState({
