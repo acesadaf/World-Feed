@@ -229,17 +229,17 @@ export class CurrentLocation extends React.Component {
             lng: latlng[1],
           }),
         })
-          // {
-          //   if (!response.ok) {
-          //     alert(
-          //       "Hi! This app runs on a basic Twitter api subscription with strict rate limits. We are likely rate limited right now, since you are seeing this :(. Please check back in 15 minutes!"
-          //     );
-          //   }
-          //   return response.json();
-          // }
-          .then((response) => response.json())
+          .then((response) => {
+            if (!response.ok) {
+              alert(
+                "Hi! This app runs on a basic Twitter api subscription with strict rate limits. We are likely rate limited right now, since you are seeing this :(. Please check back in 15 minutes!"
+              );
+            }
+            return response.json();
+          })
           .then((data) => {
             console.log(data);
+
             context.setTweets([]);
             setTimeout(() => context.setTweets(data), 500);
 
