@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b84271e8bf3f0458c1326a3c89af76bf",
+    "revision": "5e40678e8aa168a09088731445f84978",
     "url": "/World-Feed/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/World-Feed/static/css/2.11829350.chunk.css"
   },
   {
-    "revision": "b4b0e0c74d596c04b2e8",
+    "revision": "208467484f972ad4f4e0",
     "url": "/World-Feed/static/css/main.932f5ad3.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/World-Feed/static/js/2.9f789487.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b4b0e0c74d596c04b2e8",
-    "url": "/World-Feed/static/js/main.cd75d948.chunk.js"
+    "revision": "208467484f972ad4f4e0",
+    "url": "/World-Feed/static/js/main.300e9ed8.chunk.js"
   },
   {
     "revision": "637b144c05bba6620c43",
