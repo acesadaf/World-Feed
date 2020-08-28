@@ -34,11 +34,19 @@ export class CurrentLocation extends React.Component {
       let mp = document.getElementById("mapback");
       mp.classList.remove("map_canvas");
       mp.classList.add("map_canvas_blur");
-      this.setState({
-        locModalShow: true,
-        locName: this.props.zoom,
-      });
-      this.loadMap();
+      var latlng = this.map.getCenter();
+      console.log(latlng);
+      this.setState(
+        {
+          locModalShow: true,
+          locName: this.props.zoom,
+          currentLocation: {
+            lat: latlng.lat(),
+            lng: latlng.lng(),
+          },
+        },
+        () => this.loadMap()
+      );
     }
 
     if (prevProps.google != this.props.google) {
