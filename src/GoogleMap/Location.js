@@ -196,11 +196,12 @@ export class CurrentLocation extends React.Component {
         localStorage.setItem("location", "Loading Tweets..");
         context.setTweets([]);
         var latlng = event.latLng.toString().replace(/\(|\)/g, "").split(", ");
-        fetch("http://127.0.0.1:8000/get_tweet", {
+        fetch("https://world-feed-backend.herokuapp.com/get_tweet", {
           method: "post",
           headers: { "Content-type": "application/json" },
 
           body: JSON.stringify({
+            type: this.props.zoom === 7 ? "city" : "country",
             lat: latlng[0],
             lng: latlng[1],
           }),
@@ -217,20 +218,6 @@ export class CurrentLocation extends React.Component {
         this.reverseAddress(event.latLng, maps);
         this.placeMarkerAndPanTo(event.latLng, this.map, maps);
       });
-      // const service = new maps.places.PlacesService(this.map);
-      // var request = {
-      //   placeId: "ChIJN1t_tDeuEmsRUsoyG83frY4",
-      //   fields: ["name", "rating", "formatted_phone_number", "geometry"],
-      // };
-
-      // service.getDetails(request, (place, status) => {
-      //   if (status === maps.places.PlacesServiceStatus.OK) {
-      //     this.map.addListener("click", (event) => {
-      //       console.log(place.name);
-      //     });
-      //   }
-      // });
-      // this.getPlaceInfo(this.map, maps);
     }
   }
 

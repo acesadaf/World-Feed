@@ -36,18 +36,19 @@ const TweetList = () => {
   const { tweets, setTweets } = useContext(TweetContext);
   return (
     <TransitionGroup component={StyledGrid}>
-      <h1
-        class="logo"
-        style={{
-          paddingTop: "35px",
-          wordWrap: "break-word",
-        }}
-      >
-        <TextTransition
-          text={localStorage.getItem("location")}
-          springConfig={presets.wobbly}
-        ></TextTransition>
-      </h1>
+      <div class="hyphens" style={{ wordBreak: "break-word" }}>
+        <h1
+          class="logo"
+          style={{
+            paddingTop: "35px",
+          }}
+        >
+          <TextTransition
+            text={localStorage.getItem("location")}
+            springConfig={presets.wobbly}
+          ></TextTransition>
+        </h1>
+      </div>
       {tweets.map((tweet) => (
         <CSSTransition timeout={400} in={true} classNames="transition">
           {TweetCard(tweet)}
