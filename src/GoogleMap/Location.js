@@ -21,10 +21,12 @@ export class CurrentLocation extends React.Component {
         lat: lat,
         lng: lng,
       },
+      gotCurLoc: false,
       locModalShow: false,
       locName: null,
       zoom: this.props.zoom,
     };
+    this.markers = [];
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -44,23 +46,17 @@ export class CurrentLocation extends React.Component {
     }
     if (prevState.currentLocation !== this.state.currentLocation) {
       this.recenterMap();
+      var { google } = this.props;
+      var mev = {
+        stop: null,
+        latLng: new google.maps.LatLng(
+          this.state.currentLocation.lat,
+          this.state.currentLocation.lng
+        ),
+      };
+      google.maps.event.trigger(this.map, "click", mev);
     }
   }
-  // static getDerivedStateFromProps(props, state) {
-  //   if (props.zoom != state.zoom) {
-  //     return {
-  //       zoom: props.zoom,
-  //     };
-  //   }
-  // }
-
-  // componentWillReceiveProps(oldProps, newProps) {
-  //   if (oldProps.zoom != newProps.zoom) {
-  //     console.log(newProps);
-  //     // console.log(oldProps, newProps);
-  //     this.loadMap();
-  //   }
-  // }
 
   componentDidMount() {
     if (this.props.centerAroundCurrentLocation) {
@@ -71,6 +67,7 @@ export class CurrentLocation extends React.Component {
             currentLocation: {
               lat: coords.latitude,
               lng: coords.longitude,
+              gotCurLoc: true,
             },
           });
         });
@@ -190,6 +187,32 @@ export class CurrentLocation extends React.Component {
 
       this.map = new maps.Map(node, mapConfig);
       const context = this.context;
+      // if (this.state.gotCurLoc) {
+      //   localStorage.setItem("location", "Loading Tweets..");
+      //   context.setTweets([]);
+      //   var latlng = [lat, lng];
+      //   fetch("https://world-feed-backend.herokuapp.com/get_tweet", {
+      //     method: "post",
+      //     headers: { "Content-type": "application/json" },
+
+      //     body: JSON.stringify({
+      //       type: this.props.zoom === 7 ? "city" : "country",
+      //       lat: latlng[0],
+      //       lng: latlng[1],
+      //     }),
+      //   })
+      //     .then((response) => response.json())
+      //     .then((data) => {
+      //       console.log(data);
+      //       context.setTweets([]);
+      //       setTimeout(() => context.setTweets(data), 500);
+
+      //       //context.setTweets(data);
+      //     });
+      // }
+
+      // this.reverseAddress(latlng, maps);
+      // this.placeMarkerAndPanTo(latlng, this.map, maps);
       this.map.addListener("click", (event) => {
         // alert("clicked" + event.latLng);
         console.log(event);
@@ -206,7 +229,14 @@ export class CurrentLocation extends React.Component {
             lng: latlng[1],
           }),
         })
-          .then((response) => response.json())
+          .then((response) => {
+            if (!response.ok) {
+              alert(
+                "Hi! This app runs on a basic Twitter api subscription with strict rate limits. We are likely rate limited right now, since you are seeing this :(. Please check back in 15 minutes!"
+              );
+            }
+            return response.json();
+          })
           .then((data) => {
             console.log(data);
             context.setTweets([]);
@@ -260,10 +290,14 @@ export class CurrentLocation extends React.Component {
   }
 
   placeMarkerAndPanTo(latLng, map, maps) {
+    for (var i = 0; i < this.markers.length; i++) {
+      this.markers[i].setMap(null);
+    }
     var marker = new maps.Marker({
       position: latLng,
       map: map,
     });
+    this.markers.push(marker);
     map.panTo(latLng);
   }
 
