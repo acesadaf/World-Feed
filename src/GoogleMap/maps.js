@@ -49,7 +49,7 @@ export class MapContainer extends Component {
         // gestureHandling={"none"}
       >
         {/* <Marker onClick={this.onMarkerClick} name={"Dallas"} /> */}
-        <Marker onClick={this.onMarkerClick} name={"Richardson"} />
+        <Marker onClick={this.onMarkerClick} name={"You are here!"} />
         <InfoWindow
           marker={this.state.currentMarker}
           visible={this.state.info}
