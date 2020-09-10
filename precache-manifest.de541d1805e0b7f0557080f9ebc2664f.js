@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e39592b3748871b57eb3d1f02eeff7b5",
+    "revision": "fe471ec2501a02a7b71a67e2ef0f08ad",
     "url": "/World-Feed/index.html"
   },
   {
-    "revision": "bed8c651a016c86e1ce5",
+    "revision": "4a7245146ce1cade9d63",
     "url": "/World-Feed/static/css/2.11829350.chunk.css"
   },
   {
-    "revision": "6413214bdb60dfef8cb9",
+    "revision": "2927150037128007a387",
     "url": "/World-Feed/static/css/main.932f5ad3.chunk.css"
   },
   {
-    "revision": "bed8c651a016c86e1ce5",
-    "url": "/World-Feed/static/js/2.9f789487.chunk.js"
+    "revision": "4a7245146ce1cade9d63",
+    "url": "/World-Feed/static/js/2.24f9cbb0.chunk.js"
   },
   {
     "revision": "d3eab2c800484648f446253871549a7a",
-    "url": "/World-Feed/static/js/2.9f789487.chunk.js.LICENSE.txt"
+    "url": "/World-Feed/static/js/2.24f9cbb0.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "6413214bdb60dfef8cb9",
-    "url": "/World-Feed/static/js/main.77913b72.chunk.js"
+    "revision": "2927150037128007a387",
+    "url": "/World-Feed/static/js/main.cbe97b9a.chunk.js"
   },
   {
     "revision": "637b144c05bba6620c43",
