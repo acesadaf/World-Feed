@@ -1,6 +1,6 @@
 # Welcome to World Feed!
 
-Hi! This is a desktop optimized website that features a scrollable, clickable Google Map. This app works as a live Twitter Feed for the globe. Click on any location on the map, and you will be greeted with the top tweets from that location right now! 
+Hi! This is a desktop website that features a scrollable, clickable Google Map. This app works as a live Twitter Feed for the globe. Click on any location on the map, and you will be greeted with the top tweets from that location right now! 
 
 ## APIs
 
