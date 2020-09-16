@@ -2,6 +2,10 @@
 
 Hi! This is a desktop website that features a scrollable, clickable Google Map. This app works as a live Twitter Feed for the globe. Click on any location on the map, and you will be greeted with the top tweets from that location right now! 
 
+## World Feed in Action
+
+![alt text](https://github.com/acesadaf/World-Feed/blob/master/src/Images/demo.gif)
+
 ## APIs
 
 1. Google Maps API: Provides the Google Map to React
@@ -25,6 +29,4 @@ However, this runs the risk of the tweets becoming stale. To prevent this, we do
 
 In this way, we ensure that no tweets are particularly old, and maintain the spirit of a "live" feed.
 
-## World Feed in Action
 
-![alt text](https://github.com/acesadaf/World-Feed/blob/master/src/Images/demo.gif)
