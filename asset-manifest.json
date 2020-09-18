@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/World-Feed/static/css/main.932f5ad3.chunk.css",
-    "main.js": "/World-Feed/static/js/main.2515f2dd.chunk.js",
-    "main.js.map": "/World-Feed/static/js/main.2515f2dd.chunk.js.map",
+    "main.js": "/World-Feed/static/js/main.caca008d.chunk.js",
+    "main.js.map": "/World-Feed/static/js/main.caca008d.chunk.js.map",
     "runtime-main.js": "/World-Feed/static/js/runtime-main.6deb0bc8.js",
     "runtime-main.js.map": "/World-Feed/static/js/runtime-main.6deb0bc8.js.map",
     "static/css/2.11829350.chunk.css": "/World-Feed/static/css/2.11829350.chunk.css",
     "static/js/2.24f9cbb0.chunk.js": "/World-Feed/static/js/2.24f9cbb0.chunk.js",
     "static/js/2.24f9cbb0.chunk.js.map": "/World-Feed/static/js/2.24f9cbb0.chunk.js.map",
     "index.html": "/World-Feed/index.html",
-    "precache-manifest.1e1119a780911e351070723b62879bc5.js": "/World-Feed/precache-manifest.1e1119a780911e351070723b62879bc5.js",
+    "precache-manifest.1ab11417cf45709348efe65ce0bba68b.js": "/World-Feed/precache-manifest.1ab11417cf45709348efe65ce0bba68b.js",
     "service-worker.js": "/World-Feed/service-worker.js",
     "static/css/2.11829350.chunk.css.map": "/World-Feed/static/css/2.11829350.chunk.css.map",
     "static/css/main.932f5ad3.chunk.css.map": "/World-Feed/static/css/main.932f5ad3.chunk.css.map",
@@ -22,6 +22,6 @@
     "static/css/2.11829350.chunk.css",
     "static/js/2.24f9cbb0.chunk.js",
     "static/css/main.932f5ad3.chunk.css",
-    "static/js/main.2515f2dd.chunk.js"
+    "static/js/main.caca008d.chunk.js"
   ]
 }
