@@ -14,6 +14,12 @@ export class CurrentLocation extends React.Component {
   static contextType = TweetContext;
   constructor(props) {
     super(props);
+    if (document.cookie.indexOf("needsAlert") == -1) {
+      alert(
+        "Welcome to World Feed! This website is hosted on a free server, so the first set of tweets might take a while to load as it wakes up the server. Thanks for waiting!"
+      );
+      document.cookie = "needsAlert=1";
+    }
 
     const { lat, lng } = this.props.initCenter;
     this.state = {
@@ -64,12 +70,6 @@ export class CurrentLocation extends React.Component {
       };
 
       google.maps.event.trigger(this.map, "click", mev);
-      if (document.cookie.indexOf("needsAlert") == -1) {
-        alert(
-          "Welcome to World Feed! This website is hosted on a free server, so the first set of tweets might take a while to load as it wakes up the server. Thanks for waiting!"
-        );
-        document.cookie = "needsAlert=1";
-      }
     }
   }
 
